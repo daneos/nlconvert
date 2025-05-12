@@ -46,7 +46,10 @@ Offset | Size | Bits        | Description
 0x04b  | 1    | `aa-- oooo` | a=^; o=output(0-127)
 0x04c  | 1    | `ooou um--` | o=^; u=unison(0-3); m=chord_memory(0-1)
 ...    | ...  | ...         | ...
-0x055  | 1    | `---- e-bb` | e=hold_enable(0-1); b=bend_range(0-12)[^8]
+0x052  | 1    | `---- --ar` | a=arp_enable(0-1); r=arp_run(0-1)
+0x053  | 1    | `ggtt t---` | g=arp_range(0-3); t=arp_type(0-4)[^8]
+...    | ...  | ...         | ...
+0x055  | 1    | `---- e-bb` | e=hold_enable(0-1); b=bend_range(0-12)[^9]
 0x056  | 1    | `bb-- ----` | b=^
 0x057  | 1    | `--ff fff-` | f=osc2_noise_freq(0-xxx)
 0x058  | 1    | `-rrr rrrr` | r=osc2_noise_res(0-127)
@@ -54,8 +57,8 @@ Offset | Size | Bits        | Description
 0x12e  | 1    | `d-c- ----` | d=delay_on(0-1); c=delay_master_clock(0-1)
 0x12f  | 1    | `---- ---w` | w=dry_wet(0-127)
 0x130  | 1    | `wwww wwff` | w=^; f=delay_feedback(0-3)
-0x131  | 1    | `-rr- ----` | r=reverb_type(0-3)[^9]
-0x132  | 1    | `--x- ttta` | x=fx_on(0-1); t=fx_type(0-5)[^10]; a=fx_amount(0-127)
+0x131  | 1    | `-rr- ----` | r=reverb_type(0-3)[^10]
+0x132  | 1    | `--x- ttta` | x=fx_on(0-1); t=fx_type(0-5)[^11]; a=fx_amount(0-127)
 0x133  | 1    | `aaaa aarb` | a=^; r=reverb_on(0-1); b=reverb_bright(0-127)
 0x134  | 1    | `bbbb bb--` | b=^
 0x135  | 1    | `---- -eee` | e=delay_tempo(0-127)
@@ -115,7 +118,14 @@ Offset | Size | Bits        | Description
     `101` (`0x5`) = Ladder M  
     `110` (`0x6`) = Ladder TB
 
-[^8]: Bend Range mapping:  
+[^8]: Arp Type mapping:  
+    `000` (`0x0`) = up  
+    `001` (`0x1`) = down  
+    `010` (`0x2`) = up-down  
+    `011` (`0x3`) = random  
+    `100` (`0x4`) = poly
+
+[^9]: Bend Range mapping:  
     `0000` (`0x0`) = bend off  
     `0001` (`0x1`) = 1  
     `0010` (`0x2`) = 2  
@@ -130,13 +140,13 @@ Offset | Size | Bits        | Description
     `1011` (`0xb`) = -12  
     `1100` (`0xc`) = -24
 
-[^9]: Reverb Type mapping:  
+[^10]: Reverb Type mapping:  
     `00` (`0x0`) = None (not sure what this does)
     `01` (`0x1`) = Room
     `10` (`0x2`) = Stage
     `11` (`0x3`) = Hall
 
-[^10]: FX Type mapping:  
+[^11]: FX Type mapping:  
     `000` (`0x0`) = Crush  
     `001` (`0x1`) = Compressor  
     `010` (`0x2`) = Drive  
