@@ -15,10 +15,10 @@ Offset | Size | Bits        | Description
 0x014  | 1    | `---- ----` | ?
 0x015  | 3    |             | Reserved (always zero) ?
 0x018  | 4    |             | CRC Checksum
-       |      |             | 
+...    | ...  | ...         | ...
 0x02e  | 1    | `ooom lggg` | o=oct_shift(0=-2, 1=-1, 2=0, 3=+1, 4=+2); m=mono(0-1); l=legato(0-1); g=glide(0-127)
 0x02f  | 1    | `gggg dv--` | g=^; d=dlyvib2(0-1); v=dlyvib1(0-1)
-       |      |             | 
+...    | ...  | ...         | ...
 0x03a  | 1    | `ttt- --ww` | t=osc1_type(0-6)[^1]; w=osc1_wave(0-127)[^2]
 0x03b  | 1    | `wwww wkyy` | w=^; k=osc2_kbt_off(0-1); y=osc2_type(0-6)[^1] 
 0x03c  | 1    | `ysss ss--` | y=^; s=osc2_semitones(0-xxx)
@@ -37,13 +37,13 @@ Offset | Size | Bits        | Description
 0x049  | 1    | `ffff ffrr` | f=^; r=filter_resonance(0-127)
 0x04a  | 1    | `rrrr raaa` | r=^; a=filter_env_amout(0-xxx) 
 0x04b  | 1    | `aa-- oooo` | a=^; o=output(0-127)
-       |      |             | 
 0x04c  | 1    | `ooou um--` | o=^; u=unison(0-3); m=chord_memory(0-1)
+...    | ...  | ...         | ...
 0x055  | 1    | `---- e-bb` | e=hold_enable(0-1); b=bend_range(0-12)[^5]
 0x056  | 1    | `bb-- ----` | b=^
 0x057  | 1    | `--ff fff-` | f=osc2_noise_freq(0-xxx)
 0x058  | 1    | `-rrr rrrr` | r=osc2_noise_res(0-127)
-       |      |             | 
+...    | ...  | ...         | ...
 0x12e  | 1    | `d-c- ----` | d=delay_on(0-1); c=delay_master_clock(0-1)
 0x12f  | 1    | `---- ---w` | w=dry_wet(0-127)
 0x130  | 1    | `wwww wwff` | w=^; f=delay_feedback(0-3)
