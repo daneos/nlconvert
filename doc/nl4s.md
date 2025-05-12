@@ -141,9 +141,9 @@ Offset | Size | Bits        | Description
     `1100` (`0xc`) = -24
 
 [^10]: Reverb Type mapping:  
-    `00` (`0x0`) = None (not sure what this does)
-    `01` (`0x1`) = Room
-    `10` (`0x2`) = Stage
+    `00` (`0x0`) = None (not sure what this does)  
+    `01` (`0x1`) = Room  
+    `10` (`0x2`) = Stage  
     `11` (`0x3`) = Hall
 
 [^11]: FX Type mapping:  
