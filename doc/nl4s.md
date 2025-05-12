@@ -37,9 +37,9 @@ Offset | Size | Bits        | Description
 0x049  | 1    | `ffff ffrr` | f=^; r=filter_resonance(0-127)
 0x04a  | 1    | `rrrr raaa` | r=^; a=filter_env_amout(0-xxx) 
 0x04b  | 1    | `aa-- oooo` | a=^; o=output(0-127)
-0x04c  | 1    | `ooou u---` | o=^; u=unison(0-3)
        |      |             | 
-0x055  | 1    | `---- --bb` | b=bend_range(0-12)[^5]
+0x04c  | 1    | `ooou um--` | o=^; u=unison(0-3); m=chord_memory(0-1)
+0x055  | 1    | `---- e-bb` | e=hold_enable(0-1); b=bend_range(0-12)[^5]
 0x056  | 1    | `bb-- ----` | b=^
 0x057  | 1    | `--ff fff-` | f=osc2_noise_freq(0-xxx)
 0x058  | 1    | `-rrr rrrr` | r=osc2_noise_res(0-127)
