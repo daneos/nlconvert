@@ -19,19 +19,19 @@ Offset | Size | Bits        | Description
 0x02e  | 1    | `ooom lggg` | o=oct_shift(0=-2, 1=-1, 2=0, 3=+1, 4=+2); m=mono(0-1); l=legato(0-1); g=glide(0-127)
 0x02f  | 1    | `gggg dvss` | g=^; d=dlyvib2(0-1); v=dlyvib1(0-1); s=lfo1_shape(0-5)[^1]
 0x030  | 1    | `seee --rr` | s=^; e=lfo1_destination(0-5)[^2]; r=lfo1_rate(0-127, 127=pattern)
-0x031  | 1    | `rrrr raaa` | r=^; a=lfo1_amount(0-xxx)
-0x032  | 1    | `aa-- ----` | a=^
+0x031  | 1    | `rrrr raaa` | r=^; a=lfo1_amount(0-120)
+0x032  | 1    | `aaaa ----` | a=^
 0x033  | 1    | `--ss sddd` | s=lfo2_shape(0-5)[^3]; d=lfo2_destination(0-6)[^4]
 0x034  | 1    | `kirr rrrr` | k=lfo2_kbsync(0-1); i=lfo2_imp_sync(0-1); r=lfo2_rate(0-127, 127=pattern)
-0x035  | 1    | `rmmm mm--` | r=^; m=lfo2_amount(0-xxx)
+0x035  | 1    | `rmmm mmmm` | r=^; m=lfo2_amount(0-120)
 0x036  | 1    | `c--- --aa` | c=lfo2_master_clock(0-1); a=mod_env_attack(0-127)
 0x037  | 1    | `aaaa addd` | a=^; d=mod_env_decay_release(0-127, 127=inf)
-0x038  | 1    | `dddd ----` | d=^
-0x039  | 1    | `---s ssri` | s=mod_env_destination(0-6)[^5]; r=mod_env_ar(0-1); i=mod_env_imp_sync(0-1) 
+0x038  | 1    | `dddd nnnn` | d=^; n=mod_env_amount(0-120)
+0x039  | 1    | `nnns ssri` | n=^; s=mod_env_destination(0-6)[^5]; r=mod_env_ar(0-1); i=mod_env_imp_sync(0-1) 
 0x03a  | 1    | `ttt- --ww` | t=osc1_type(0-6)[^6]; w=osc1_wave(0-127)[^7]
 0x03b  | 1    | `wwww wkyy` | w=^; k=osc2_kbt_off(0-1); y=osc2_type(0-6)[^6] 
-0x03c  | 1    | `ysss ss--` | y=^; s=osc2_semitones(0-xxx)
-0x03d  | 1    | `ffff f--t` | f=osc2_fine_tune(0-xxx); t=osc1_mod_type(0-5)[^8]
+0x03c  | 1    | `ysss ssss` | y=^; s=osc2_semitones(0-120)
+0x03d  | 1    | `ffff ffft` | f=osc2_fine_tune(0-120); t=osc1_mod_type(0-5)[^8]
 0x03e  | 1    | `ttaa aaaa` | t=^; a=osc1_mod_amount(0-127)
 0x03f  | 1    | `ammm mmmm` | a=^; m=osc_mix(0-127)
 0x040  | 1    | `aaaa aaad` | a=amp_env_attack(0-127); d=amp_env_decay(0-127)
@@ -44,17 +44,17 @@ Offset | Size | Bits        | Description
 0x047  | 1    | `rttt kkv-` | r=^; t=filter_type(0-6)[^9]; k=filter_kb_track(0-3); v=filter_velocity(0-1)
 0x048  | 1    | `dddd dddf` | d=filter_drive(0-127); f=filter_freq(0-127)
 0x049  | 1    | `ffff ffrr` | f=^; r=filter_resonance(0-127)
-0x04a  | 1    | `rrrr raaa` | r=^; a=filter_env_amout(0-xxx) 
-0x04b  | 1    | `aa-- oooo` | a=^; o=output(0-127)
+0x04a  | 1    | `rrrr raaa` | r=^; a=filter_env_amout(0-120) 
+0x04b  | 1    | `aaaa oooo` | a=^; o=output(0-127)
 0x04c  | 1    | `ooou um--` | o=^; u=unison(0-3); m=chord_memory(0-1)
 ...    | ...  | ...         | ...
 0x052  | 1    | `---- --ar` | a=arp_enable(0-1); r=arp_run(0-1)
-0x053  | 1    | `ggtt t---` | g=arp_range(0-3); t=arp_type(0-4)[^10]
-0x054  | 1    | `---- ----` | ...
+0x053  | 1    | `ggtt t--p` | g=arp_range(0-3); t=arp_type(0-4)[^10]; p=arp_rate(0-127; 127=pattern)
+0x054  | 1    | `pppp pp--` | p=^
 0x055  | 1    | `---- e-bb` | e=hold_enable(0-1); b=bend_range(0-12)[^11]
 0x056  | 1    | `bb-- ----` | b=^
-0x057  | 1    | `--ff fff-` | f=osc2_noise_freq(0-xxx)
-0x058  | 1    | `-rrr rrrr` | r=osc2_noise_res(0-127)
+0x057  | 1    | `--ff ffff` | f=osc2_noise_freq(0-120)
+0x058  | 1    | `frrr rrrr` | r=osc2_noise_res(0-127)
 ...    | ...  | ...         | ...
 0x12e  | 1    | `d-c- ----` | d=delay_on(0-1); c=delay_master_clock(0-1)
 0x12f  | 1    | `---- ---w` | w=dry_wet(0-127)
